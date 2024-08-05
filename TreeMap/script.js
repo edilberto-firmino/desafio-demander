@@ -23,7 +23,9 @@ const createTreemap = (data) => {
 
     const tooltip = d3.select('body').append('div')
         .attr('class', 'tooltip')
-        .style('opacity', 0);
+        .style('opacity', 0)
+        .style('position', 'absolute')  // Garantir que a posição seja absoluta
+        .style('pointer-events', 'none'); // Evitar que a tooltip afete o mouse
 
     svg.selectAll('rect')
         .data(root.leaves())
@@ -38,13 +40,47 @@ const createTreemap = (data) => {
         .on('mouseover', (event, d) => {
             const value = parseFloat(d.data.value) || 0;  
             tooltip.transition().duration(200).style('opacity', .9);
-            tooltip.html(`<strong>${d.data.name}</strong><br>Value: $${value.toFixed(2)}`)
-                .style('left', (event.pageX + 5) + 'px')
-                .style('top', (event.pageY - 28) + 'px');
+            tooltip.html(`<strong>${d.data.name}</strong><br>Value: $${value.toFixed(2)}`);
+
+            // Calcular a posição do tooltip
+            let tooltipWidth = tooltip.node().offsetWidth;
+            let tooltipHeight = tooltip.node().offsetHeight;
+            let x = event.pageX + 5;
+            let y = event.pageY - 28;
+
+            // Ajustar a posição para não sair da tela
+            if (x + tooltipWidth > window.innerWidth) {
+                x = window.innerWidth - tooltipWidth - 10;
+            }
+            if (y < 0) {
+                y = 10;
+            }
+            if (y + tooltipHeight > window.innerHeight) {
+                y = window.innerHeight - tooltipHeight - 10;
+            }
+
+            tooltip.style('left', x + 'px')
+                   .style('top', y + 'px');
         })
         .on('mousemove', (event) => {
-            tooltip.style('left', (event.pageX + 5) + 'px')
-                .style('top', (event.pageY - 28) + 'px');
+            let tooltipWidth = tooltip.node().offsetWidth;
+            let tooltipHeight = tooltip.node().offsetHeight;
+            let x = event.pageX + 5;
+            let y = event.pageY - 28;
+
+            // Ajustar a posição para não sair da tela
+            if (x + tooltipWidth > window.innerWidth) {
+                x = window.innerWidth - tooltipWidth - 10;
+            }
+            if (y < 0) {
+                y = 10;
+            }
+            if (y + tooltipHeight > window.innerHeight) {
+                y = window.innerHeight - tooltipHeight - 10;
+            }
+
+            tooltip.style('left', x + 'px')
+                   .style('top', y + 'px');
         })
         .on('mouseout', () => {
             tooltip.transition().duration(500).style('opacity', 0);
