@@ -1,25 +1,104 @@
-
-#treemap {
-    max-width: 100%;
-    border: 1px solid #ddd;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    border-radius: 0.375rem; 
-}
-
-#form-container {
-    border-radius: 0.375rem; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-}
-
-#items-list {
-    margin-top: 20px;
-}
-
-.form-label, .form-control, .btn {
-    margin-bottom: 10px;
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Permite barras de rolagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
 .container {
-    padding: 0 15px; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px; /* Limite a largura máxima da container */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os elementos */
+}
+
+#treemap {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    height: 400px; /* Ajuste a altura conforme necessário */
+    position: relative;
+}
+
+#treemap svg {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
+#form-container {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+#items-container {
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #f9f9f9;
+    max-height: 300px; /* Limite a altura da lista de itens */
+    overflow-y: auto; /* Permite rolar se a lista for muito longa */
+}
+
+#items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: #007BFF;
+    font-size: 20px; /* Ajuste o tamanho do título */
+}
+
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 6px 12px; /* Ajuste o padding para botões menores */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px; /* Ajuste o tamanho da fonte */
+    text-align: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#items-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#items-list button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 4px 8px; /* Ajuste o padding para botões menores */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px; /* Ajuste o tamanho da fonte */
+}
+
+#items-list button:hover {
+    background-color: #c82333;
 }

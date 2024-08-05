@@ -23,11 +23,6 @@ const createTreemap = (data) => {
 
     const tooltip = d3.select('body').append('div')
         .attr('class', 'tooltip')
-        .style('position', 'absolute')
-        .style('padding', '5px')
-        .style('background', 'rgba(0, 0, 0, 0.7)')
-        .style('color', '#fff')
-        .style('border-radius', '4px')
         .style('opacity', 0);
 
     svg.selectAll('rect')
@@ -64,7 +59,7 @@ const createTreemap = (data) => {
         .attr('fill', '#000')
         .text(d => d.data.name);
 
-    svg.style('border', '1px solid #ccc');
+    svg.style('border', '1px solid #ddd');
 };
 
 document.addEventListener("DOMContentLoaded", function() {
