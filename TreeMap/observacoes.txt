@@ -1,3 +1,3 @@
-rodar o arquivo em localhost dentro de um apache, 
+rodar o arquivo em localhost dentro de um apache ou com comando no terminal(php -S localhost:8080), 
 inserir o banco de dados existente se não quiser colocar item por item inicialmente, 
 configurar os arquivos php para comunicação com o banco de dados 
